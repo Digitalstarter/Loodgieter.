@@ -1,0 +1,151 @@
+Doel: Bouw een super professionele loodgieters-website op domein loodgieter-services.nl. Layout en structuur mogen ongeveer lijken op loodgieterstad.nl (inspiratie), maar geen copy-paste van teksten/beelden. Moderne, strakke, conversie-gerichte uitstraling.
+
+1) Tech stack (Railway-ready, niet Replit-afhankelijk)
+
+Gebruik Next.js (App Router) + Tailwind CSS.
+
+Geen Replit database / Replit specifieke services.
+
+Project moet direct te deployen zijn op Railway.
+
+Voeg toe:
+
+Dockerfile óf standaard Next.js build (Railway kan beide; liefst zonder extra fratsen).
+
+duidelijke README.md met deploy stappen voor Railway + env vars.
+
+2) Pagina’s / routing
+
+Maak:
+
+Home: /
+
+Stadspagina’s (exact deze 4):
+
+/loodgieter-amsterdam
+
+/loodgieter-rotterdam
+
+/loodgieter-leiden
+
+/loodgieter-zoetermeer
+
+Contact pagina: /contact
+
+Offerte aanvragen pagina: /offerte (mag ook sectie op home, maar ik wil minstens een duidelijke route/sectie)
+
+Belangrijk: Stadspagina’s moeten dezelfde layout hebben als home, maar met stadnaam dynamisch in:
+
+H1 titel (bijv. “Loodgieter Zoetermeer”)
+
+hero tekst / intro
+
+SEO title + meta description
+
+CTA tekst waar relevant
+
+eventueel “Werkgebied: [stad] en omgeving”
+
+3) Menu navigatie
+
+Bovenaan header met nav
+
+Een menu item: “Steden” (dropdown of submenu)
+
+Amsterdam / Rotterdam / Leiden / Zoetermeer
+
+Klik op stad → gaat naar de stadspagina
+
+4) Diensten (uit screenshot)
+
+Toon deze diensten als kaarten/sectie (met icoontjes):
+
+Riool ontstoppen
+
+WC ontstoppen
+
+Gootsteen ontstoppen
+
+Rioolservice
+
+Daarnaast in “Waarom wij” of “Over ons”:
+
+10+ jaar ervaring
+
+Snelle service / bereikbaar (algemene teksten, geen onrealistische claims)
+
+5) Conversie knoppen (Bel / WhatsApp / Offerte)
+
+Sticky/floating WhatsApp knop (mobiel extra zichtbaar)
+
+Link naar WhatsApp: https://wa.me/31681759520
+
+Tekst: “WhatsApp”
+
+Duidelijke CTA knoppen:
+
+“Offerte aanvragen”
+
+“Bel direct” (telefoonnummer kan als placeholder, ik vul later in als ik wil)
+
+6) Formulieren (offerte + contact)
+
+Ik wil minimaal:
+
+Offerte formulier (naam, telefoon, e-mail, stad (dropdown), bericht/omschrijving, akkoord privacy checkbox)
+
+Contact formulier (naam, e-mail, bericht)
+
+Na versturen:
+
+Success melding (geen page crash)
+
+Validatie (minimaal required velden)
+
+7) E-mail ontvangen op info@loodgieter-services.nl
+
+Bij elke aanvraag (offerte/contact) moet er een e-mail gestuurd worden naar:
+
+info@loodgieter-services.nl
+
+Implementatie voorkeur:
+
+Gebruik een betrouwbare mail provider via API (aanbevolen): Resend of SendGrid of Mailgun.
+
+Maak een server-side endpoint (Next.js route handler) dat form data ontvangt en mail verstuurt.
+
+Gebruik env vars voor keys en sender.
+
+8) Design / secties (professioneel)
+
+Homepage (en stadspagina’s) bevatten:
+
+Hero sectie met titel + korte pitch + CTA buttons
+
+Diensten sectie (4 diensten)
+
+“Waarom kiezen voor ons” (bullet points)
+
+Ervaringen/Reviews sectie (3–6 voorbeeld reviews, algemeen, geen echte personen nodig)
+
+FAQ (4–6 vragen)
+
+Footer met contactgegevens + steden links
+
+Zorg dat alles:
+
+Mobile-first is (perfect op telefoon)
+
+Snelle laadtijd
+
+SEO basis goed (titles, meta, headings)
+
+Voeg LocalBusiness/Plumber structured data toe (basis schema)
+
+9) Content regels
+
+Geen kopiëren van loodgieterstad.nl teksten of assets.
+
+Schrijf eigen Nederlandse teksten, professioneel en overtuigend.
+
+Logo laat ik zelf later toevoegen → zet nu een nette tekst-placeholder in header.
