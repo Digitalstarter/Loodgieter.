@@ -1,5 +1,4 @@
 import { Link } from "wouter";
-import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@assets/stock_images/professional_plumber_aca9a869.jpg";
 
@@ -14,7 +13,7 @@ export function Hero({ cityName }: HeroProps) {
     : "De betrouwbare loodgieter in uw regio";
 
   return (
-    <section className="relative min-h-[70vh] w-full overflow-hidden lg:min-h-[80vh]">
+    <section className="relative min-h-[50vh] w-full overflow-hidden lg:min-h-[60vh]">
       {/* Background Image with Dark Wash */}
       <div className="absolute inset-0">
         <img
@@ -26,7 +25,7 @@ export function Hero({ cityName }: HeroProps) {
       </div>
 
       {/* Content */}
-      <div className="relative mx-auto flex min-h-[70vh] max-w-7xl items-center px-4 py-16 sm:px-6 lg:min-h-[80vh] lg:px-8 lg:py-24">
+      <div className="relative mx-auto flex min-h-[50vh] max-w-7xl items-center px-4 py-12 sm:px-6 lg:min-h-[60vh] lg:px-8 lg:py-16">
         <div className="max-w-2xl">
           {/* Badge */}
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
@@ -61,23 +60,13 @@ export function Hero({ cityName }: HeroProps) {
 
           {/* CTA Buttons */}
           <div className="flex flex-col gap-4 sm:flex-row">
-            <Link href="/contact">
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="w-full border-white/30 bg-white/10 px-8 text-white backdrop-blur-sm hover:bg-white/20 sm:w-auto" 
-                data-testid="button-hero-contact"
-              >
-                Contact
-              </Button>
-            </Link>
             <Link href="/offerte">
               <Button 
                 size="lg" 
-                className="w-full gap-2 bg-slate-700 px-8 text-white hover:bg-slate-600 sm:w-auto" 
+                className="w-full gap-2 bg-primary px-8 text-white hover:bg-primary/90 sm:w-auto" 
                 data-testid="button-hero-offerte"
               >
-                Alle diensten
+                Offerte Aanvragen
               </Button>
             </Link>
           </div>
@@ -104,13 +93,6 @@ export function Hero({ cityName }: HeroProps) {
             </div>
           </div>
 
-          {/* Quick Contact */}
-          <div className="mt-8 flex items-center gap-4">
-            <a href="tel:+31626144204" className="flex items-center gap-2 text-white hover:text-blue-300">
-              <Phone className="h-5 w-5" />
-              <span className="font-semibold">06 26 14 42 04</span>
-            </a>
-          </div>
         </div>
       </div>
     </section>

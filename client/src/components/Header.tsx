@@ -94,7 +94,7 @@ export function Header() {
               </Button>
             </a>
             <Link href="/offerte">
-              <Button data-testid="button-offerte-header">Offerte Aanvragen</Button>
+              <Button data-testid="button-offerte-header">Gratis Offerte Aanvragen</Button>
             </Link>
           </div>
 
