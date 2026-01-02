@@ -55,6 +55,7 @@ export function Header() {
                     <Link
                       href={`/loodgieter-${city.slug}`}
                       className="w-full cursor-pointer"
+                      onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
                       data-testid={`nav-city-${city.slug}`}
                     >
                       {city.name}
@@ -134,7 +135,10 @@ export function Header() {
                   <Button
                     variant="ghost"
                     className="w-full justify-start pl-8"
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      window.scrollTo({ top: 0, behavior: 'instant' });
+                    }}
                     data-testid={`nav-mobile-city-${city.slug}`}
                   >
                     {city.name}

@@ -20,7 +20,11 @@ export function Werkgebieden() {
         {/* Cities Grid */}
         <div className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {cities.map((city) => (
-            <Link key={city.slug} href={`/loodgieter-${city.slug}`}>
+            <Link 
+              key={city.slug} 
+              href={`/loodgieter-${city.slug}`}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
+            >
               <Button
                 variant="outline"
                 className="h-auto w-full flex-col gap-2 p-6"
