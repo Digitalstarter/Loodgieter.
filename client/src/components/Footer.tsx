@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { cities } from "@shared/schema";
-import logoImage from "@assets/WhatsApp_Image_2025-12-25_at_05.24.47_1767312302726.jpeg";
+import logoImage from "@assets/Ontwerp_zonder_titel_(67)_1767313104156.png";
 
 export function Footer() {
   return (

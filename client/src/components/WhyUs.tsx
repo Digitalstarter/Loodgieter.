@@ -84,11 +84,11 @@ export function WhyUs() {
                 <div className="mt-1 text-xs text-muted-foreground">Jaar Ervaring</div>
               </div>
               <div className="rounded-lg bg-background p-4 text-center">
-                <div className="text-2xl font-bold text-primary" data-testid="stat-customers">2500+</div>
+                <div className="text-2xl font-bold text-primary" data-testid="stat-customers">1000+</div>
                 <div className="mt-1 text-xs text-muted-foreground">Tevreden Klanten</div>
               </div>
               <div className="rounded-lg bg-background p-4 text-center">
-                <div className="text-2xl font-bold text-primary" data-testid="stat-projects">5000+</div>
+                <div className="text-2xl font-bold text-primary" data-testid="stat-projects">1000+</div>
                 <div className="mt-1 text-xs text-muted-foreground">Projecten</div>
               </div>
               <div className="rounded-lg bg-background p-4 text-center">

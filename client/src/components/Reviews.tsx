@@ -14,30 +14,6 @@ const reviews = [
     rating: 5,
     text: "Al jaren mijn vaste loodgieter. Betrouwbaar, eerlijk en kundig. De communicatie is altijd helder en de prijzen zijn fair.",
   },
-  {
-    name: "Peter B.",
-    location: "Leiden",
-    rating: 5,
-    text: "Snelle hulp bij een lekkage. De monteur was vriendelijk, legde alles goed uit en liet geen rommel achter. Aanrader!",
-  },
-  {
-    name: "Sandra M.",
-    location: "Zoetermeer",
-    rating: 5,
-    text: "Na een andere slechte ervaring was ik sceptisch, maar deze loodgieter heeft mijn vertrouwen hersteld. Vakkundig en betaalbaar.",
-  },
-  {
-    name: "Henk J.",
-    location: "Amsterdam",
-    rating: 5,
-    text: "Geweldige ervaring! Kwam dezelfde dag nog langs voor een verstopte gootsteen. Probleem was zo opgelost. Top service!",
-  },
-  {
-    name: "Linda W.",
-    location: "Rotterdam",
-    rating: 5,
-    text: "Zeer tevreden over de installatie van onze nieuwe badkamer. Alles netjes afgewerkt en binnen de afgesproken tijd klaar.",
-  },
 ];
 
 export function Reviews() {
@@ -55,7 +31,7 @@ export function Reviews() {
         </div>
 
         {/* Reviews Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
           {reviews.map((review, index) => (
             <Card key={index} className="h-full" data-testid={`review-card-${index}`}>
               <CardContent className="flex h-full flex-col p-6">
