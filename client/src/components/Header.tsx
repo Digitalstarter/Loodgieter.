@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cities } from "@shared/schema";
+import logoImage from "@assets/WhatsApp_Image_2025-12-25_at_05.24.47_1767312302726.jpeg";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -26,12 +27,12 @@ export function Header() {
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary">
-              <span className="text-lg font-bold text-primary-foreground">LS</span>
-            </div>
-            <span className="hidden text-lg font-semibold text-foreground sm:block">
-              Loodgieter Services
-            </span>
+            <img 
+              src={logoImage} 
+              alt="Loodgieter Services Logo" 
+              className="h-12 w-auto object-contain"
+              data-testid="header-logo"
+            />
           </Link>
 
           {/* Desktop Navigation */}

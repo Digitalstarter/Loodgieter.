@@ -33,7 +33,7 @@ interface OfferteFormProps {
 export function OfferteForm({ defaultCity }: OfferteFormProps) {
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const form = useForm<InsertOfferte>({
+  const form = useForm({
     resolver: zodResolver(insertOfferteSchema),
     defaultValues: {
       naam: "",
@@ -46,7 +46,7 @@ export function OfferteForm({ defaultCity }: OfferteFormProps) {
   });
 
   const mutation = useMutation({
-    mutationFn: async (data: InsertOfferte) => {
+    mutationFn: async (data: Record<string, unknown>) => {
       return apiRequest("POST", "/api/offerte", data);
     },
     onSuccess: () => {
@@ -55,7 +55,7 @@ export function OfferteForm({ defaultCity }: OfferteFormProps) {
     },
   });
 
-  const onSubmit = (data: InsertOfferte) => {
+  const onSubmit = (data: Record<string, unknown>) => {
     mutation.mutate(data);
   };
 

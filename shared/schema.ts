@@ -23,7 +23,7 @@ export const insertOfferteSchema = createInsertSchema(offerteRequests).omit({
   email: z.string().email("Geldig e-mailadres is verplicht"),
   stad: z.string().min(1, "Selecteer een stad"),
   bericht: z.string().min(10, "Bericht moet minimaal 10 karakters bevatten"),
-  privacyAkkoord: z.enum(["true"], { errorMap: () => ({ message: "U moet akkoord gaan met het privacybeleid" }) }),
+  privacyAkkoord: z.string().refine((val) => val === "true", { message: "U moet akkoord gaan met het privacybeleid" }),
 });
 
 export type InsertOfferte = z.infer<typeof insertOfferteSchema>;

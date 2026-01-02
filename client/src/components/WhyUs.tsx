@@ -1,4 +1,5 @@
 import { Check, Clock, Shield, Award, Users, ThumbsUp } from "lucide-react";
+import vansImage from "@assets/WhatsApp_Image_2025-12-24_at_21.51.08_1767312299284.jpeg";
 
 const reasons = [
   {
@@ -64,45 +65,35 @@ export function WhyUs() {
             </div>
           </div>
 
-          {/* Right Column - Stats/Image Area */}
-          <div className="flex flex-col justify-center">
-            <div className="rounded-lg bg-gradient-to-br from-primary/5 to-accent/10 p-8 lg:p-12">
-              <div className="grid grid-cols-2 gap-8">
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary lg:text-5xl" data-testid="stat-years">10+</div>
-                  <div className="mt-2 text-sm text-muted-foreground">Jaar Ervaring</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary lg:text-5xl" data-testid="stat-customers">2500+</div>
-                  <div className="mt-2 text-sm text-muted-foreground">Tevreden Klanten</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary lg:text-5xl" data-testid="stat-projects">5000+</div>
-                  <div className="mt-2 text-sm text-muted-foreground">Projecten</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-primary lg:text-5xl" data-testid="stat-rating">4.9</div>
-                  <div className="mt-2 text-sm text-muted-foreground">Gemiddelde Score</div>
-                </div>
-              </div>
+          {/* Right Column - Image and Stats */}
+          <div className="flex flex-col justify-center gap-6">
+            {/* Company Vans Image */}
+            <div className="overflow-hidden rounded-lg">
+              <img
+                src={vansImage}
+                alt="Loodgieter Services bedrijfswagens"
+                className="h-auto w-full object-cover"
+                data-testid="whyus-vans-image"
+              />
+            </div>
 
-              <div className="mt-8 rounded-lg bg-background/80 p-6 backdrop-blur">
-                <div className="flex items-center gap-3">
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3, 4].map((i) => (
-                      <div
-                        key={i}
-                        className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-background bg-primary/20 text-sm font-medium text-primary"
-                      >
-                        {String.fromCharCode(64 + i)}
-                      </div>
-                    ))}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Ons Team</div>
-                    <div className="text-sm text-muted-foreground">Ervaren professionals</div>
-                  </div>
-                </div>
+            {/* Stats */}
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+              <div className="rounded-lg bg-background p-4 text-center">
+                <div className="text-2xl font-bold text-primary" data-testid="stat-years">10+</div>
+                <div className="mt-1 text-xs text-muted-foreground">Jaar Ervaring</div>
+              </div>
+              <div className="rounded-lg bg-background p-4 text-center">
+                <div className="text-2xl font-bold text-primary" data-testid="stat-customers">2500+</div>
+                <div className="mt-1 text-xs text-muted-foreground">Tevreden Klanten</div>
+              </div>
+              <div className="rounded-lg bg-background p-4 text-center">
+                <div className="text-2xl font-bold text-primary" data-testid="stat-projects">5000+</div>
+                <div className="mt-1 text-xs text-muted-foreground">Projecten</div>
+              </div>
+              <div className="rounded-lg bg-background p-4 text-center">
+                <div className="text-2xl font-bold text-primary" data-testid="stat-rating">4.9</div>
+                <div className="mt-1 text-xs text-muted-foreground">Gemiddelde Score</div>
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { cities } from "@shared/schema";
+import logoImage from "@assets/WhatsApp_Image_2025-12-25_at_05.24.47_1767312302726.jpeg";
 
 export function Footer() {
   return (
@@ -9,11 +10,13 @@ export function Footer() {
         <div className="grid gap-8 lg:grid-cols-4">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary">
-                <span className="text-lg font-bold text-primary-foreground">LS</span>
-              </div>
-              <span className="text-lg font-semibold">Loodgieter Services</span>
+            <div className="mb-4">
+              <img 
+                src={logoImage} 
+                alt="Loodgieter Services Logo" 
+                className="h-12 w-auto rounded bg-white p-1 object-contain"
+                data-testid="footer-logo"
+              />
             </div>
             <p className="mt-4 text-sm text-background/70">
               Uw betrouwbare partner voor alle loodgieterswerkzaamheden.
