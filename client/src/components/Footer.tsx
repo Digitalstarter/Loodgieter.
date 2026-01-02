@@ -33,34 +33,34 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="tel:+31626144204"
+                  href="tel:+31681759520"
                   className="flex items-center gap-2 text-sm text-background/70 transition-colors hover:text-background"
                   data-testid="footer-phone"
                 >
                   <Phone className="h-4 w-4" />
-                  <span>06 26 14 42 04</span>
+                  <span>+31 6 81759520</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="https://wa.me/31626144204"
+                  href="https://wa.me/31681759520"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-background/70 transition-colors hover:text-background"
                   data-testid="footer-whatsapp"
                 >
                   <SiWhatsapp className="h-4 w-4" />
-                  <span>WhatsApp: 06 26 14 42 04</span>
+                  <span>WhatsApp: +31 6 81759520</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:247loodgieters@gmail.com"
+                  href="mailto:Info@loodgieter-services.nl"
                   className="flex items-center gap-2 text-sm text-background/70 transition-colors hover:text-background"
                   data-testid="footer-email"
                 >
                   <Mail className="h-4 w-4" />
-                  <span>247loodgieters@gmail.com</span>
+                  <span>Info@loodgieter-services.nl</span>
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-background/70">

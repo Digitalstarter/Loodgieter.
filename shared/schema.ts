@@ -17,13 +17,13 @@ export const offerteRequests = pgTable("offerte_requests", {
 export const insertOfferteSchema = createInsertSchema(offerteRequests).omit({
   id: true,
   createdAt: true,
+  privacyAkkoord: true,
 }).extend({
   naam: z.string().min(2, "Naam is verplicht"),
   telefoon: z.string().min(10, "Geldig telefoonnummer is verplicht"),
   email: z.string().email("Geldig e-mailadres is verplicht"),
   stad: z.string().min(1, "Selecteer een stad"),
   bericht: z.string().min(10, "Bericht moet minimaal 10 karakters bevatten"),
-  privacyAkkoord: z.string().refine((val) => val === "true", { message: "U moet akkoord gaan met het privacybeleid" }),
 });
 
 export type InsertOfferte = z.infer<typeof insertOfferteSchema>;

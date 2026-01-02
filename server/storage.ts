@@ -49,6 +49,7 @@ export class MemStorage implements IStorage {
     const offerte: Offerte = { 
       ...insertOfferte, 
       id,
+      privacyAkkoord: "true",
       createdAt: new Date()
     };
     this.offertes.set(id, offerte);

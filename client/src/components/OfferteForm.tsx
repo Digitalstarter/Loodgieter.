@@ -6,7 +6,6 @@ import { Check, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Select,
   SelectContent,
@@ -24,7 +23,7 @@ import {
 } from "@/components/ui/form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { apiRequest } from "@/lib/queryClient";
-import { insertOfferteSchema, type InsertOfferte, cities } from "@shared/schema";
+import { insertOfferteSchema, cities } from "@shared/schema";
 
 interface OfferteFormProps {
   defaultCity?: string;
@@ -41,7 +40,6 @@ export function OfferteForm({ defaultCity }: OfferteFormProps) {
       email: "",
       stad: defaultCity || "",
       bericht: "",
-      privacyAkkoord: "",
     },
   });
 
@@ -191,32 +189,6 @@ export function OfferteForm({ defaultCity }: OfferteFormProps) {
                     />
                   </FormControl>
                   <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="privacyAkkoord"
-              render={({ field }) => (
-                <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value === "true"}
-                      onCheckedChange={(checked) => field.onChange(checked ? "true" : "")}
-                      data-testid="checkbox-offerte-privacy"
-                    />
-                  </FormControl>
-                  <div className="space-y-1 leading-none">
-                    <FormLabel className="font-normal">
-                      Ik ga akkoord met het{" "}
-                      <a href="#" className="text-primary underline">
-                        privacybeleid
-                      </a>{" "}
-                      *
-                    </FormLabel>
-                    <FormMessage />
-                  </div>
                 </FormItem>
               )}
             />

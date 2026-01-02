@@ -63,11 +63,11 @@ export default function Contact() {
                       <div>
                         <h3 className="font-semibold text-foreground">Telefoon</h3>
                         <a
-                          href="tel:+31626144204"
+                          href="tel:+31681759520"
                           className="text-muted-foreground hover:text-primary"
                           data-testid="contact-phone"
                         >
-                          06 26 14 42 04
+                          +31 6 81759520
                         </a>
                       </div>
                     </CardContent>
@@ -80,9 +80,9 @@ export default function Contact() {
                       </div>
                       <div className="flex-1">
                         <h3 className="font-semibold text-foreground">WhatsApp</h3>
-                        <p className="text-sm text-muted-foreground">06 26 14 42 04</p>
+                        <p className="text-sm text-muted-foreground">+31 6 81759520</p>
                       </div>
-                      <a href="https://wa.me/31626144204" target="_blank" rel="noopener noreferrer">
+                      <a href="https://wa.me/31681759520" target="_blank" rel="noopener noreferrer">
                         <Button variant="outline" size="sm" data-testid="contact-whatsapp">
                           Open WhatsApp
                         </Button>
@@ -98,11 +98,11 @@ export default function Contact() {
                       <div>
                         <h3 className="font-semibold text-foreground">E-mail</h3>
                         <a
-                          href="mailto:247loodgieters@gmail.com"
+                          href="mailto:Info@loodgieter-services.nl"
                           className="text-muted-foreground hover:text-primary"
                           data-testid="contact-email"
                         >
-                          247loodgieters@gmail.com
+                          Info@loodgieter-services.nl
                         </a>
                       </div>
                     </CardContent>
