@@ -1,7 +1,8 @@
 import { Link } from "wouter";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
 import { cities } from "@shared/schema";
-import logoImage from "@assets/Ontwerp_zonder_titel_(67)_1767313104156.png";
+import logoImage from "@assets/Zonder_titel_(300_x_100_px)_1767314014631.png";
 
 export function Footer() {
   return (
@@ -32,22 +33,34 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="tel:+31000000000"
+                  href="tel:+31626144204"
                   className="flex items-center gap-2 text-sm text-background/70 transition-colors hover:text-background"
                   data-testid="footer-phone"
                 >
                   <Phone className="h-4 w-4" />
-                  <span>+31 (0)00 000 0000</span>
+                  <span>06 26 14 42 04</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@loodgieter-services.nl"
+                  href="https://wa.me/31626144204"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-background/70 transition-colors hover:text-background"
+                  data-testid="footer-whatsapp"
+                >
+                  <SiWhatsapp className="h-4 w-4" />
+                  <span>WhatsApp: 06 26 14 42 04</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:247loodgieters@gmail.com"
                   className="flex items-center gap-2 text-sm text-background/70 transition-colors hover:text-background"
                   data-testid="footer-email"
                 >
                   <Mail className="h-4 w-4" />
-                  <span>info@loodgieter-services.nl</span>
+                  <span>247loodgieters@gmail.com</span>
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-background/70">
@@ -117,24 +130,18 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 border-t border-background/10 pt-8">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+          <div className="flex flex-col items-center justify-center gap-2 text-center">
             <p className="text-sm text-background/60">
-              © {new Date().getFullYear()} Loodgieter Services. Alle rechten voorbehouden.
+              © 2026 Loodgieter Services | Alle rechten voorbehouden | designed by{" "}
+              <a
+                href="https://www.digitalstarters.nl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-background/80 underline transition-colors hover:text-background"
+              >
+                DigitalStarters
+              </a>
             </p>
-            <div className="flex gap-6">
-              <a
-                href="#"
-                className="text-sm text-background/60 transition-colors hover:text-background"
-              >
-                Privacybeleid
-              </a>
-              <a
-                href="#"
-                className="text-sm text-background/60 transition-colors hover:text-background"
-              >
-                Algemene Voorwaarden
-              </a>
-            </div>
           </div>
         </div>
       </div>

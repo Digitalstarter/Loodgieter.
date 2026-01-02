@@ -2,8 +2,10 @@ import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { ContactForm } from "@/components/ContactForm";
-import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -61,13 +63,30 @@ export default function Contact() {
                       <div>
                         <h3 className="font-semibold text-foreground">Telefoon</h3>
                         <a
-                          href="tel:+31000000000"
+                          href="tel:+31626144204"
                           className="text-muted-foreground hover:text-primary"
                           data-testid="contact-phone"
                         >
-                          +31 (0)00 000 0000
+                          06 26 14 42 04
                         </a>
                       </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardContent className="flex items-center gap-4 p-4">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#25D366]/10 text-[#25D366]">
+                        <SiWhatsapp className="h-6 w-6" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-foreground">WhatsApp</h3>
+                        <p className="text-sm text-muted-foreground">06 26 14 42 04</p>
+                      </div>
+                      <a href="https://wa.me/31626144204" target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline" size="sm" data-testid="contact-whatsapp">
+                          Open WhatsApp
+                        </Button>
+                      </a>
                     </CardContent>
                   </Card>
 
@@ -79,30 +98,13 @@ export default function Contact() {
                       <div>
                         <h3 className="font-semibold text-foreground">E-mail</h3>
                         <a
-                          href="mailto:info@loodgieter-services.nl"
+                          href="mailto:247loodgieters@gmail.com"
                           className="text-muted-foreground hover:text-primary"
                           data-testid="contact-email"
                         >
-                          info@loodgieter-services.nl
+                          247loodgieters@gmail.com
                         </a>
                       </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardContent className="flex items-center gap-4 p-4">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#25D366]/10 text-[#25D366]">
-                        <MessageCircle className="h-6 w-6" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-foreground">WhatsApp</h3>
-                        <p className="text-sm text-muted-foreground">Direct chatten</p>
-                      </div>
-                      <a href="https://wa.me/31681759520" target="_blank" rel="noopener noreferrer">
-                        <Button variant="outline" size="sm" data-testid="contact-whatsapp">
-                          Open WhatsApp
-                        </Button>
-                      </a>
                     </CardContent>
                   </Card>
 
@@ -146,6 +148,7 @@ export default function Contact() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <ScrollToTop />
     </div>
   );
 }

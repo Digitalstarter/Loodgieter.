@@ -9,17 +9,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cities } from "@shared/schema";
-import logoImage from "@assets/Ontwerp_zonder_titel_(67)_1767313104156.png";
+import logoImage from "@assets/Zonder_titel_(300_x_100_px)_1767314014631.png";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location] = useLocation();
-
-  const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Offerte", href: "/offerte" },
-    { label: "Contact", href: "/contact" },
-  ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -35,19 +29,17 @@ export function Header() {
             />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Order: Home, Steden, Offerte, Contact */}
           <nav className="hidden items-center gap-1 md:flex">
-            {navItems.map((item) => (
-              <Link key={item.href} href={item.href}>
-                <Button
-                  variant="ghost"
-                  className={location === item.href ? "bg-accent" : ""}
-                  data-testid={`nav-${item.label.toLowerCase()}`}
-                >
-                  {item.label}
-                </Button>
-              </Link>
-            ))}
+            <Link href="/">
+              <Button
+                variant="ghost"
+                className={location === "/" ? "bg-accent" : ""}
+                data-testid="nav-home"
+              >
+                Home
+              </Button>
+            </Link>
 
             {/* Steden Dropdown */}
             <DropdownMenu>
@@ -71,11 +63,31 @@ export function Header() {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
+
+            <Link href="/offerte">
+              <Button
+                variant="ghost"
+                className={location === "/offerte" ? "bg-accent" : ""}
+                data-testid="nav-offerte"
+              >
+                Offerte
+              </Button>
+            </Link>
+
+            <Link href="/contact">
+              <Button
+                variant="ghost"
+                className={location === "/contact" ? "bg-accent" : ""}
+                data-testid="nav-contact"
+              >
+                Contact
+              </Button>
+            </Link>
           </nav>
 
           {/* CTA Buttons */}
           <div className="hidden items-center gap-2 md:flex">
-            <a href="tel:+31000000000">
+            <a href="tel:+31626144204">
               <Button variant="outline" className="gap-2" data-testid="button-bel">
                 <Phone className="h-4 w-4" />
                 Bel Direct
@@ -103,18 +115,16 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="border-t border-border bg-background md:hidden">
           <nav className="mx-auto max-w-7xl space-y-1 px-4 py-4">
-            {navItems.map((item) => (
-              <Link key={item.href} href={item.href}>
-                <Button
-                  variant="ghost"
-                  className={`w-full justify-start ${location === item.href ? "bg-accent" : ""}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                  data-testid={`nav-mobile-${item.label.toLowerCase()}`}
-                >
-                  {item.label}
-                </Button>
-              </Link>
-            ))}
+            <Link href="/">
+              <Button
+                variant="ghost"
+                className={`w-full justify-start ${location === "/" ? "bg-accent" : ""}`}
+                onClick={() => setMobileMenuOpen(false)}
+                data-testid="nav-mobile-home"
+              >
+                Home
+              </Button>
+            </Link>
 
             {/* Mobile Steden */}
             <div className="border-t border-border pt-2">
@@ -133,9 +143,31 @@ export function Header() {
               ))}
             </div>
 
+            <Link href="/offerte">
+              <Button
+                variant="ghost"
+                className={`w-full justify-start ${location === "/offerte" ? "bg-accent" : ""}`}
+                onClick={() => setMobileMenuOpen(false)}
+                data-testid="nav-mobile-offerte"
+              >
+                Offerte
+              </Button>
+            </Link>
+
+            <Link href="/contact">
+              <Button
+                variant="ghost"
+                className={`w-full justify-start ${location === "/contact" ? "bg-accent" : ""}`}
+                onClick={() => setMobileMenuOpen(false)}
+                data-testid="nav-mobile-contact"
+              >
+                Contact
+              </Button>
+            </Link>
+
             {/* Mobile CTAs */}
             <div className="space-y-2 border-t border-border pt-4">
-              <a href="tel:+31000000000" className="block">
+              <a href="tel:+31626144204" className="block">
                 <Button variant="outline" className="w-full gap-2">
                   <Phone className="h-4 w-4" />
                   Bel Direct

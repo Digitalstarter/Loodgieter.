@@ -64,24 +64,6 @@ export function Reviews() {
             </Card>
           ))}
         </div>
-
-        {/* Overall Rating */}
-        <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-4 rounded-lg bg-card p-6">
-            <div className="flex gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className="h-6 w-6 fill-yellow-400 text-yellow-400"
-                />
-              ))}
-            </div>
-            <div className="text-left">
-              <div className="text-2xl font-bold text-foreground">4.9/5</div>
-              <div className="text-sm text-muted-foreground">Gebaseerd op 200+ reviews</div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -7,6 +7,7 @@ import { Reviews } from "@/components/Reviews";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { StructuredData } from "@/components/StructuredData";
 import { cities, type CityData } from "@shared/schema";
 
@@ -72,6 +73,7 @@ export default function CityPage({ citySlug }: CityPageProps) {
         </main>
         <Footer />
         <WhatsAppButton />
+        <ScrollToTop />
       </div>
     </>
   );

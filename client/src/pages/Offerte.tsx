@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { OfferteForm } from "@/components/OfferteForm";
 import { Check, Clock, Shield, ThumbsUp } from "lucide-react";
 
@@ -91,6 +92,7 @@ export default function Offerte() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <ScrollToTop />
     </div>
   );
 }

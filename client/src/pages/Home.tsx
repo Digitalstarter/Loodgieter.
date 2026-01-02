@@ -7,6 +7,7 @@ import { Werkgebieden } from "@/components/Werkgebieden";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { StructuredData } from "@/components/StructuredData";
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
         </main>
         <Footer />
         <WhatsAppButton />
+        <ScrollToTop />
       </div>
     </>
   );
