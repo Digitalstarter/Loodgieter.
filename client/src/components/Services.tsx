@@ -1,24 +1,27 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Droplets, CircleDot, Pipette, Wrench } from "lucide-react";
+import rioolImage from "@assets/stock_images/drain_pipe_sewer_cle_d0807308.jpg";
+import wcImage from "@assets/stock_images/toilet_bathroom_wc_w_7a410947.jpg";
+import gooststeenImage from "@assets/stock_images/kitchen_sink_drain_f_a4dad1f3.jpg";
+import rioolserviceImage from "@assets/stock_images/plumber_sewer_inspec_212c25f4.jpg";
 
 const services = [
   {
-    icon: Droplets,
+    image: rioolImage,
     title: "Riool Ontstoppen",
     description: "Verstopt riool? Wij lossen het snel en effectief op met professionele apparatuur. Van kleine verstopping tot complete rioolreiniging.",
   },
   {
-    icon: CircleDot,
+    image: wcImage,
     title: "WC Ontstoppen",
     description: "Een verstopte WC is vervelend. Onze specialisten zijn snel ter plaatse en zorgen ervoor dat uw toilet weer normaal functioneert.",
   },
   {
-    icon: Pipette,
+    image: gooststeenImage,
     title: "Gootsteen Ontstoppen",
     description: "Last van een verstopte gootsteen? Wij maken uw afvoer weer vrij zodat u zonder zorgen kunt koken en afwassen.",
   },
   {
-    icon: Wrench,
+    image: rioolserviceImage,
     title: "Rioolservice",
     description: "Complete rioolservice van inspectie tot reparatie. Wij zorgen voor een goed functionerend rioolsysteem in uw woning of bedrijf.",
   },
@@ -44,17 +47,21 @@ export function Services() {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="group transition-all duration-200 hover-elevate"
+              className="group overflow-hidden transition-all duration-200"
               data-testid={`service-card-${index}`}
             >
-              <CardContent className="p-6">
-                <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                  <service.icon className="h-7 w-7" />
-                </div>
-                <h3 className="mb-2 text-xl font-semibold text-foreground">
+              <div className="aspect-video overflow-hidden">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+              <CardContent className="p-4">
+                <h3 className="mb-2 text-lg font-semibold text-foreground">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-sm text-muted-foreground">
                   {service.description}
                 </p>
               </CardContent>

@@ -134,12 +134,12 @@ export function Footer() {
             <p className="text-sm text-background/60">
               © 2026 Loodgieter Services | Alle rechten voorbehouden | designed by{" "}
               <a
-                href="https://www.digitalstarters.nl"
+                href="https://digitalstarter.nl"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-background/80 underline transition-colors hover:text-background"
               >
-                DigitalStarters
+                DigitalStarter
               </a>
             </p>
           </div>
