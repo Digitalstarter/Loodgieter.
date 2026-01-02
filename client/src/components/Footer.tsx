@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import { cities } from "@shared/schema";
-import logoImage from "@assets/Zonder_titel_(300_x_100_px)_1767314014631.png";
+import logoImage from "@assets/Zonder_titel_(300_x_100_px)_(1)_1767314984342.png";
 
 export function Footer() {
   return (
@@ -15,7 +15,7 @@ export function Footer() {
               <img 
                 src={logoImage} 
                 alt="Loodgieter Services Logo" 
-                className="h-12 w-auto rounded bg-white p-1 object-contain"
+                className="h-12 w-auto object-contain"
                 data-testid="footer-logo"
               />
             </div>

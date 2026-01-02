@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cities } from "@shared/schema";
-import logoImage from "@assets/Zonder_titel_(300_x_100_px)_1767314014631.png";
+import logoImage from "@assets/Zonder_titel_(300_x_100_px)_(1)_1767314984342.png";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
