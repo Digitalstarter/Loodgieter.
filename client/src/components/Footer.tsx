@@ -118,6 +118,7 @@ export function Footer() {
                   <Link
                     href={`/loodgieter-${city.slug}`}
                     className="text-sm text-background/70 transition-colors hover:text-background"
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
                     data-testid={`footer-city-${city.slug}`}
                   >
                     Loodgieter {city.name}
