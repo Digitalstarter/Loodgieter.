@@ -88,7 +88,7 @@ export function Header() {
 
           {/* CTA Buttons */}
           <div className="hidden items-center gap-2 md:flex">
-            <a href="tel:+31681759520">
+            <a href="tel:+31685217512">
               <Button variant="outline" className="gap-2" data-testid="button-bel">
                 <Phone className="h-4 w-4" />
                 Bel Direct
@@ -171,7 +171,7 @@ export function Header() {
 
             {/* Mobile CTAs */}
             <div className="space-y-2 border-t border-border pt-4">
-              <a href="tel:+31681759520" className="block">
+              <a href="tel:+31685217512" className="block">
                 <Button variant="outline" className="w-full gap-2">
                   <Phone className="h-4 w-4" />
                   Bel Direct

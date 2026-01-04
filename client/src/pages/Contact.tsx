@@ -63,11 +63,11 @@ export default function Contact() {
                       <div>
                         <h3 className="font-semibold text-foreground">Telefoon</h3>
                         <a
-                          href="tel:+31681759520"
+                          href="tel:+31685217512"
                           className="text-muted-foreground hover:text-primary"
                           data-testid="contact-phone"
                         >
-                          +31 6 81759520
+                          +31 6 85217512
                         </a>
                       </div>
                     </CardContent>
@@ -80,9 +80,9 @@ export default function Contact() {
                       </div>
                       <div className="flex-1">
                         <h3 className="font-semibold text-foreground">WhatsApp</h3>
-                        <p className="text-sm text-muted-foreground">+31 6 81759520</p>
+                        <p className="text-sm text-muted-foreground">+31 6 85217512</p>
                       </div>
-                      <a href="https://wa.me/31681759520" target="_blank" rel="noopener noreferrer">
+                      <a href="https://wa.me/31685217512" target="_blank" rel="noopener noreferrer">
                         <Button variant="outline" size="sm" data-testid="contact-whatsapp">
                           Open WhatsApp
                         </Button>

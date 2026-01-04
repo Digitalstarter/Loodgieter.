@@ -33,12 +33,12 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="tel:+31681759520"
+                  href="tel:+31685217512"
                   className="flex items-center gap-2 text-sm text-background/70 transition-colors hover:text-background"
                   data-testid="footer-phone"
                 >
                   <Phone className="h-4 w-4" />
-                  <span>+31 6 81759520</span>
+                  <span>+31 6 85217512</span>
                 </a>
               </li>
               <li>
@@ -50,7 +50,7 @@ export function Footer() {
                   data-testid="footer-whatsapp"
                 >
                   <SiWhatsapp className="h-4 w-4" />
-                  <span>WhatsApp: +31 6 81759520</span>
+                  <span>WhatsApp: +31 6 85217512</span>
                 </a>
               </li>
               <li>
