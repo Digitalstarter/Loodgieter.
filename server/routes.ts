@@ -34,8 +34,8 @@ export async function registerRoutes(
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
-              to: "info@loodgieter-services.nl",
+              from: process.env.FROM_EMAIL,
+              to: process.env.TO_EMAIL,
               subject: `Nieuwe Offerte Aanvraag - ${offerte.naam} (${offerte.stad})`,
               html: `
                 <h2>Nieuwe Offerte Aanvraag</h2>
@@ -99,8 +99,8 @@ export async function registerRoutes(
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
-              to: "info@loodgieter-services.nl",
+              from: process.env.FROM_EMAIL,
+              to: process.env.TO_EMAIL,
               subject: `Nieuw Contactbericht - ${contact.naam}`,
               html: `
                 <h2>Nieuw Contactbericht</h2>
