@@ -99,26 +99,25 @@ export function Reviews() {
           ))}
         </div>
 
-        {/* Trustpilot Widget */}
+        {/* Trustpilot Widget - Review Collector */}
         <div className="mx-auto mt-12 max-w-4xl w-full">
           <div
             className="trustpilot-widget"
-            data-locale="en-US"
+            data-locale="nl-NL"
             data-template-id="56278e9abfbbba0bdcd568bc"
             data-businessunit-id="67a60ec3d88afca670dcb654"
             data-style-height="52px"
             data-style-width="100%"
-            data-token="3459af4e-d4f6-4e10-8f1f-073bb2f90853"
+            data-token="8fc082ba-b52b-42ee-aea7-67422d1586e0"
             id="trustpilot-widget"
             data-testid="trustpilot-widget"
           >
             <a
-              href="https://www.trustpilot.com/review/loodgieter-services.nl"
+              href="https://nl.trustpilot.com/review/loodgieter-services.nl"
               target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
+              rel="noopener"
             >
-              Bekijk onze reviews op Trustpilot
+              Trustpilot
             </a>
           </div>
         </div>
