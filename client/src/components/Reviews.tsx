@@ -1,5 +1,14 @@
+import { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
+
+declare global {
+  interface Window {
+    Trustpilot?: {
+      loadFromElement: (element: HTMLElement, reload?: boolean) => void;
+    };
+  }
+}
 
 const reviews = [
   {
@@ -17,6 +26,15 @@ const reviews = [
 ];
 
 export function Reviews() {
+  useEffect(() => {
+    if (window.Trustpilot) {
+      const widget = document.querySelector('.trustpilot-widget');
+      if (widget) {
+        window.Trustpilot.loadFromElement(widget as HTMLElement, true);
+      }
+    }
+  }, []);
+
   return (
     <section className="bg-background py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
