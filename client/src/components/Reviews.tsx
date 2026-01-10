@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 
@@ -26,29 +26,30 @@ const reviews = [
 ];
 
 export function Reviews() {
+  const trustpilotRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const loadTrustpilot = () => {
-      const widget = document.getElementById('trustpilot-widget');
-      if (window.Trustpilot && widget) {
-        window.Trustpilot.loadFromElement(widget, true);
+    const loadWidget = () => {
+      if (window.Trustpilot && trustpilotRef.current) {
+        window.Trustpilot.loadFromElement(trustpilotRef.current, true);
       }
     };
 
-    const timeout = setTimeout(() => {
-      if (window.Trustpilot) {
-        loadTrustpilot();
-      } else {
-        const interval = setInterval(() => {
-          if (window.Trustpilot) {
-            loadTrustpilot();
-            clearInterval(interval);
-          }
-        }, 500);
-        setTimeout(() => clearInterval(interval), 10000);
-      }
-    }, 1000);
-
-    return () => clearTimeout(timeout);
+    if (window.Trustpilot) {
+      loadWidget();
+    } else {
+      let attempts = 0;
+      const interval = setInterval(() => {
+        attempts++;
+        if (window.Trustpilot) {
+          loadWidget();
+          clearInterval(interval);
+        } else if (attempts >= 20) {
+          clearInterval(interval);
+        }
+      }, 500);
+      return () => clearInterval(interval);
+    }
   }, []);
 
   return (
@@ -100,8 +101,9 @@ export function Reviews() {
         </div>
 
         {/* Trustpilot Widget - Review Collector */}
-        <div className="mx-auto mt-12 max-w-4xl w-full">
+        <div className="mx-auto mt-12 max-w-4xl w-full flex justify-center">
           <div
+            ref={trustpilotRef}
             className="trustpilot-widget"
             data-locale="nl-NL"
             data-template-id="56278e9abfbbba0bdcd568bc"
@@ -109,8 +111,8 @@ export function Reviews() {
             data-style-height="52px"
             data-style-width="100%"
             data-token="8fc082ba-b52b-42ee-aea7-67422d1586e0"
-            id="trustpilot-widget"
             data-testid="trustpilot-widget"
+            style={{ display: 'block', minHeight: '52px' }}
           >
             <a
               href="https://nl.trustpilot.com/review/loodgieter-services.nl"
