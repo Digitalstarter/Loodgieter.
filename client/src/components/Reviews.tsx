@@ -21,41 +21,54 @@ export function Reviews() {
   const trustpilotRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    // Ensure Trustpilot script is loaded (if not already in index.html)
-    const ensureScript = () =>
-      new Promise<void>((resolve) => {
-        if (document.querySelector('script[src*="widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"]')) {
+    const SCRIPT_SRC =
+      "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
+
+    const ensureScriptLoaded = () =>
+      new Promise<void>((resolve, reject) => {
+        // Is the script already present?
+        const existing = document.querySelector<HTMLScriptElement>(
+          `script[src="${SCRIPT_SRC}"], script[src="https:${SCRIPT_SRC}"], script[src="http:${SCRIPT_SRC}"]`
+        );
+        if (existing) {
+          // If it’s already loaded, resolve immediately
           resolve();
           return;
         }
-        const s = document.createElement("script");
-        s.type = "text/javascript";
-        s.src = "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
-        s.async = true;
-        s.onload = () => resolve();
-        document.head.appendChild(s);
+
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = SCRIPT_SRC;
+        script.async = true;
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error("Failed to load Trustpilot script"));
+        document.head.appendChild(script);
       });
 
-    // After script is available, force-load widget from element (React/SPA safe)
+    let intervalId: number | null = null;
+
     const loadWidget = async () => {
-      await ensureScript();
+      try {
+        await ensureScriptLoaded();
 
-      // Poll briefly until the Trustpilot global is ready
-      const t = setInterval(() => {
-        const tp = (window as any).Trustpilot;
-        if (tp && trustpilotRef.current) {
-          tp.loadFromElement(trustpilotRef.current, true);
-          clearInterval(t);
-        }
-      }, 200);
-
-      // Cleanup
-      return () => clearInterval(t);
+        // Wait until Trustpilot global is available, then render widget
+        intervalId = window.setInterval(() => {
+          const tp = (window as any).Trustpilot;
+          if (tp && trustpilotRef.current) {
+            tp.loadFromElement(trustpilotRef.current, true);
+            if (intervalId) window.clearInterval(intervalId);
+            intervalId = null;
+          }
+        }, 200);
+      } catch (e) {
+        console.error(e);
+      }
     };
 
-    const cleanupPromise = loadWidget();
+    loadWidget();
+
     return () => {
-      cleanupPromise.then((cleanup) => cleanup?.());
+      if (intervalId) window.clearInterval(intervalId);
     };
   }, []);
 
@@ -88,7 +101,9 @@ export function Reviews() {
                 </div>
 
                 {/* Review Text */}
-                <p className="mb-4 flex-1 text-muted-foreground italic">"{review.text}"</p>
+                <p className="mb-4 flex-1 text-muted-foreground italic">
+                  "{review.text}"
+                </p>
 
                 {/* Reviewer Info */}
                 <div className="flex items-center gap-3">
@@ -108,7 +123,7 @@ export function Reviews() {
           ))}
         </div>
 
-        {/* Trustpilot Widget - Review Collector (direct embed, below reviews) */}
+        {/* Trustpilot TrustBox widget - Review Collector (below reviews) */}
         <div className="mx-auto mt-12 max-w-4xl w-full">
           <div
             ref={trustpilotRef}
