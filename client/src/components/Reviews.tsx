@@ -27,11 +27,23 @@ const reviews = [
 
 export function Reviews() {
   useEffect(() => {
-    if (window.Trustpilot) {
+    const loadTrustpilot = () => {
       const widget = document.querySelector('.trustpilot-widget');
-      if (widget) {
+      if (window.Trustpilot && widget) {
         window.Trustpilot.loadFromElement(widget as HTMLElement, true);
       }
+    };
+
+    if (window.Trustpilot) {
+      loadTrustpilot();
+    } else {
+      const interval = setInterval(() => {
+        if (window.Trustpilot) {
+          loadTrustpilot();
+          clearInterval(interval);
+        }
+      }, 500);
+      return () => clearInterval(interval);
     }
   }, []);
 
