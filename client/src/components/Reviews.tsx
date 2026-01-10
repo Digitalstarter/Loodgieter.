@@ -128,7 +128,7 @@ export function Reviews() {
           <div
             ref={trustpilotRef}
             className="trustpilot-widget"
-            data-locale="en-US"
+            data-locale="nl-NL"
             data-template-id="56278e9abfbbba0bdcd568bc"
             data-businessunit-id="67a60ec3d88afca670dcb654"
             data-style-height="52px"
