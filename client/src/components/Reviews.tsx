@@ -1,14 +1,5 @@
-import { useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
-
-declare global {
-  interface Window {
-    Trustpilot?: {
-      loadFromElement: (element: HTMLElement, reload?: boolean) => void;
-    };
-  }
-}
 
 const reviews = [
   {
@@ -26,32 +17,6 @@ const reviews = [
 ];
 
 export function Reviews() {
-  const trustpilotRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const loadWidget = () => {
-      if (window.Trustpilot && trustpilotRef.current) {
-        window.Trustpilot.loadFromElement(trustpilotRef.current, true);
-      }
-    };
-
-    if (window.Trustpilot) {
-      loadWidget();
-    } else {
-      let attempts = 0;
-      const interval = setInterval(() => {
-        attempts++;
-        if (window.Trustpilot) {
-          loadWidget();
-          clearInterval(interval);
-        } else if (attempts >= 20) {
-          clearInterval(interval);
-        }
-      }, 500);
-      return () => clearInterval(interval);
-    }
-  }, []);
-
   return (
     <section className="bg-background py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -100,28 +65,18 @@ export function Reviews() {
           ))}
         </div>
 
-        {/* Trustpilot Widget - Review Collector */}
+        {/* Trustpilot Widget - Review Collector via iframe */}
         <div className="mx-auto mt-12 max-w-4xl w-full flex justify-center">
-          <div
-            ref={trustpilotRef}
-            className="trustpilot-widget"
-            data-locale="nl-NL"
-            data-template-id="56278e9abfbbba0bdcd568bc"
-            data-businessunit-id="67a60ec3d88afca670dcb654"
-            data-style-height="52px"
-            data-style-width="100%"
-            data-token="8fc082ba-b52b-42ee-aea7-67422d1586e0"
+          <iframe
+            src="/trustpilot.html"
+            title="Trustpilot Review Collector"
+            width="100%"
+            height="80"
+            frameBorder="0"
+            scrolling="no"
+            style={{ border: 'none', background: 'transparent', maxWidth: '400px' }}
             data-testid="trustpilot-widget"
-            style={{ display: 'block', minHeight: '52px' }}
-          >
-            <a
-              href="https://nl.trustpilot.com/review/loodgieter-services.nl"
-              target="_blank"
-              rel="noopener"
-            >
-              Trustpilot
-            </a>
-          </div>
+          />
         </div>
       </div>
     </section>
