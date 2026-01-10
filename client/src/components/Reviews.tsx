@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 
@@ -17,12 +18,56 @@ const reviews = [
 ];
 
 export function Reviews() {
+  const trustpilotRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    // Ensure Trustpilot script is loaded (if not already in index.html)
+    const ensureScript = () =>
+      new Promise<void>((resolve) => {
+        if (document.querySelector('script[src*="widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"]')) {
+          resolve();
+          return;
+        }
+        const s = document.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js";
+        s.async = true;
+        s.onload = () => resolve();
+        document.head.appendChild(s);
+      });
+
+    // After script is available, force-load widget from element (React/SPA safe)
+    const loadWidget = async () => {
+      await ensureScript();
+
+      // Poll briefly until the Trustpilot global is ready
+      const t = setInterval(() => {
+        const tp = (window as any).Trustpilot;
+        if (tp && trustpilotRef.current) {
+          tp.loadFromElement(trustpilotRef.current, true);
+          clearInterval(t);
+        }
+      }, 200);
+
+      // Cleanup
+      return () => clearInterval(t);
+    };
+
+    const cleanupPromise = loadWidget();
+    return () => {
+      cleanupPromise.then((cleanup) => cleanup?.());
+    };
+  }, []);
+
   return (
     <section className="bg-background py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl" data-testid="reviews-title">
+          <h2
+            className="mb-4 text-3xl font-bold text-foreground sm:text-4xl"
+            data-testid="reviews-title"
+          >
             Wat Onze Klanten Zeggen
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
@@ -38,22 +83,20 @@ export function Reviews() {
                 {/* Stars */}
                 <div className="mb-4 flex gap-1">
                   {[...Array(review.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-5 w-5 fill-yellow-400 text-yellow-400"
-                    />
+                    <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
 
                 {/* Review Text */}
-                <p className="mb-4 flex-1 text-muted-foreground italic">
-                  "{review.text}"
-                </p>
+                <p className="mb-4 flex-1 text-muted-foreground italic">"{review.text}"</p>
 
                 {/* Reviewer Info */}
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
-                    {review.name.split(" ").map(n => n[0]).join("")}
+                    {review.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">{review.name}</div>
@@ -65,18 +108,27 @@ export function Reviews() {
           ))}
         </div>
 
-        {/* Trustpilot Widget - Review Collector via iframe */}
-        <div className="mx-auto mt-12 max-w-4xl w-full flex justify-center">
-          <iframe
-            src="/trustpilot.html"
-            title="Trustpilot Review Collector"
-            width="100%"
-            height="80"
-            frameBorder="0"
-            scrolling="no"
-            style={{ border: 'none', background: 'transparent', maxWidth: '400px' }}
+        {/* Trustpilot Widget - Review Collector (direct embed, below reviews) */}
+        <div className="mx-auto mt-12 max-w-4xl w-full">
+          <div
+            ref={trustpilotRef}
+            className="trustpilot-widget"
+            data-locale="en-US"
+            data-template-id="56278e9abfbbba0bdcd568bc"
+            data-businessunit-id="67a60ec3d88afca670dcb654"
+            data-style-height="52px"
+            data-style-width="100%"
+            data-token="395a3fe9-5184-4d81-804f-6b782756c8ae"
             data-testid="trustpilot-widget"
-          />
+          >
+            <a
+              href="https://www.trustpilot.com/review/loodgieter-services.nl"
+              target="_blank"
+              rel="noopener"
+            >
+              Trustpilot
+            </a>
+          </div>
         </div>
       </div>
     </section>
