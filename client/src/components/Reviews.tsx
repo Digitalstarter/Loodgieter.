@@ -28,23 +28,27 @@ const reviews = [
 export function Reviews() {
   useEffect(() => {
     const loadTrustpilot = () => {
-      const widget = document.querySelector('.trustpilot-widget');
+      const widget = document.getElementById('trustpilot-widget');
       if (window.Trustpilot && widget) {
-        window.Trustpilot.loadFromElement(widget as HTMLElement, true);
+        window.Trustpilot.loadFromElement(widget, true);
       }
     };
 
-    if (window.Trustpilot) {
-      loadTrustpilot();
-    } else {
-      const interval = setInterval(() => {
-        if (window.Trustpilot) {
-          loadTrustpilot();
-          clearInterval(interval);
-        }
-      }, 500);
-      return () => clearInterval(interval);
-    }
+    const timeout = setTimeout(() => {
+      if (window.Trustpilot) {
+        loadTrustpilot();
+      } else {
+        const interval = setInterval(() => {
+          if (window.Trustpilot) {
+            loadTrustpilot();
+            clearInterval(interval);
+          }
+        }, 500);
+        setTimeout(() => clearInterval(interval), 10000);
+      }
+    }, 1000);
+
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
@@ -96,23 +100,25 @@ export function Reviews() {
         </div>
 
         {/* Trustpilot Widget */}
-        <div className="mx-auto mt-12 max-w-4xl">
+        <div className="mx-auto mt-12 max-w-4xl w-full">
           <div
-            className="trustpilot-widget w-full"
+            className="trustpilot-widget"
             data-locale="en-US"
             data-template-id="56278e9abfbbba0bdcd568bc"
             data-businessunit-id="67a60ec3d88afca670dcb654"
             data-style-height="52px"
             data-style-width="100%"
             data-token="3459af4e-d4f6-4e10-8f1f-073bb2f90853"
+            id="trustpilot-widget"
             data-testid="trustpilot-widget"
           >
             <a
               href="https://www.trustpilot.com/review/loodgieter-services.nl"
               target="_blank"
               rel="noopener noreferrer"
+              className="text-primary hover:underline"
             >
-              Trustpilot
+              Bekijk onze reviews op Trustpilot
             </a>
           </div>
         </div>
